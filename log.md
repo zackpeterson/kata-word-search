@@ -83,3 +83,7 @@ I added the tests project to the solution.
     dotnet sln add WordSearch.Tests/WordSearch.Tests.csproj
 
 I created sample methods in the `Program.cs` and `UnitTest1.cs` files to make sure tests execute.
+
+## Reading and writing files
+
+I copied a text file to the output directory during build. I loaded and read the text file from the output directory. I created and saved a new text file into the output directory.
