@@ -59,6 +59,23 @@ namespace WordSearch
             return result;
         }
 
+        public static List<FoundWord> Solve(string word, char[,] grid, (int y, int x) position)
+        {
+            List<FoundWord> result = new List<FoundWord>();
+            if(grid[position.y, position.x] == word.ToCharArray()[0])
+            {
+                List<FoundWord> candidates = Candidates(word.Length, grid, position);
+                foreach (FoundWord c in candidates)
+                {
+                    if (c.Word == word)
+                    {
+                        result.Add(c);
+                    }
+                }
+            }
+            return result;
+        }
+
         public static List<FoundWord> Candidates(int wordlength, char[,] grid, (int y, int x) position)
         {
             List<FoundWord> candidates = new List<FoundWord>();

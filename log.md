@@ -164,3 +164,5 @@ I created the *Candidates()* method to find all possible strings of a given leng
     From position (1, 1) three 3-letter long words are possible to the east, southeast, and south: "GHI", "GMS", and "GLQ".
 
     No 3-letter long words are possible in any of the other five directions.
+
+I created a method *Solve()* that find all instances of a single word starting from a single position.
