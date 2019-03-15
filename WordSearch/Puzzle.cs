@@ -29,6 +29,15 @@ namespace WordSearch
             result &= ValidateWordsNotTooLong(words, gridsize);
             result &= ValidateWordsDoNotRepeat(words);
 
+            char[,] grid = new char[gridsize, gridsize];
+            for(int y = 0; y < gridsize; y++)
+            {
+                // split letters on comma
+                string[] letters = lines[y + 1].Split(",");
+
+                result &= ValidateEachLetterIsSingleCharacter(letters);
+            }
+
             return result;
         }
 
@@ -56,6 +65,11 @@ namespace WordSearch
         public static bool ValidateWordsDoNotRepeat(string[] words)
         {
             return words.Length == words.Distinct().Count();
+        }
+
+        public static bool ValidateEachLetterIsSingleCharacter(string[] letters)
+        {
+            return letters.All(letter => letter.Length == 1);
         }
     }
 }

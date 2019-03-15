@@ -137,5 +137,31 @@ namespace WordSearch.Tests
             bool result = Puzzle.Validate(text);
             Assert.IsFalse(result, message);
         }
+
+        [TestMethod]
+        public void ValidateEachLetterIsSingleCharacter_ShouldReturnTrue_WhenEachLetterIsSingleCharacter()
+        {
+            string message = "each letter string must be a single character long";
+
+            string[] multipleletters = new string[] {"A", "BB", "C", "D"};
+            bool multipleresult = Puzzle.ValidateEachLetterIsSingleCharacter(multipleletters);
+            Assert.IsFalse(multipleresult, message);
+
+            string[] singleletters = new string[] {"A", "B", "C", "D"};
+            bool singleresult = Puzzle.ValidateEachLetterIsSingleCharacter(singleletters);
+            Assert.IsTrue(singleresult, message);
+        }
+
+        [TestMethod]
+        public void Validate_ShouldReturnFalse_WhenAnyLetterIsMultipleCharacters()
+        {
+            string message = "each letter string must be a single character long";
+            string text = @"AB,DEF
+                            A,B,C
+                            D,EE,F
+                            G,H,I".Replace(" ", "");
+            bool result = Puzzle.Validate(text);
+            Assert.IsFalse(result, message);
+        }
     }
 }
