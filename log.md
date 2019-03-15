@@ -165,4 +165,6 @@ I created the *Candidates()* method to find all possible strings of a given leng
 
     No 3-letter long words are possible in any of the other five directions.
 
-I created a method *Solve()* that find all instances of a single word starting from a single position.
+I created a method *Solve()* that finds all instances of a single word starting from a single position.
+
+I created another method *Solve()* that searches all positions to find all instances of a single word.

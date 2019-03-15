@@ -115,5 +115,25 @@ namespace WordSearch.Tests
             Assert.AreEqual(expected[0].Word, actual[0].Word, message);
             CollectionAssert.AreEqual(expected[0].Positions, actual[0].Positions, message);
         }
+
+        [TestMethod]
+        public void Solve_ShouldReturnFoundWords_WhenGivenGridAndSingleWord()
+        {
+            string message = "searches all positions to find all instances of a single word";
+            string word = "BE";
+            char[,] grid = new char[,] { {'A', 'B', 'C'},
+                                         {'D', 'E', 'F'},
+                                         {'G', 'H', 'I'} };
+            List<FoundWord> actual = Solve(word, grid);
+
+            List<FoundWord> expected = new List<FoundWord>();
+            FoundWord south = new FoundWord();
+            south.Word = "BE";
+            south.Positions = new List<(int y, int x)> {(0, 1), (1, 1)};
+            expected.Add(south);
+
+            Assert.AreEqual(expected[0].Word, actual[0].Word, message);
+            CollectionAssert.AreEqual(expected[0].Positions, actual[0].Positions, message);
+        }
     }
 }

@@ -59,6 +59,20 @@ namespace WordSearch
             return result;
         }
 
+        public static List<FoundWord> Solve(string word, char[,] grid)
+        {
+            List<FoundWord> result = new List<FoundWord>();
+            for (int y = 0; y < grid.GetLength(0); y++)
+            {
+                for (int x = 0; x < grid.GetLength(0); x++)
+                {
+                    var position = (y: y, x: x);
+                    List<FoundWord> f = Solve(word, grid, position);
+                    result.AddRange(f);
+                }
+            }
+            return result;
+        }
         public static List<FoundWord> Solve(string word, char[,] grid, (int y, int x) position)
         {
             List<FoundWord> result = new List<FoundWord>();
