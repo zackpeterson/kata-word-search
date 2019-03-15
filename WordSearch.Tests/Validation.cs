@@ -31,5 +31,31 @@ namespace WordSearch.Tests
             bool result = Puzzle.Validate(text);
             Assert.IsFalse(result, message);
         }
+
+        [TestMethod]
+        public void ValidateWordsExist_ShouldReturnTrue_WhenWordsExist()
+        {
+            string message = "there must be words";
+
+            string[] emptywords = new string[] { };
+            bool emptyresult = Puzzle.ValidateWordsExist(emptywords);
+            Assert.IsFalse(emptyresult, message);
+
+            string[] populatedwords = new string[] {"ONE", "TWO", "THREE"};
+            bool populatedresult = Puzzle.ValidateWordsExist(populatedwords);
+            Assert.IsTrue(populatedresult, message);
+        }
+
+        [TestMethod]
+        public void Validate_ShouldReturnFalse_WhenNoWordsExist()
+        {
+            string message = "there must be words";
+            string text = @"
+                           A,B,C
+                           D,E,F
+                           G,H,I";
+            bool result = Puzzle.Validate(text);
+            Assert.IsFalse(result, message);
+        }
     }
 }
