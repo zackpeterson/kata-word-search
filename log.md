@@ -148,3 +148,19 @@ Grid coordinates:
     X   X   X   X   X
 
     A word of length 4 that starts from position (2, 2) and continues toward the east cannot fit in a 5-by-5 size puzzle.
+
+I created the *Candidates()* method to find all possible strings of a given length from a given position in every direction of a given grid.
+
+    A   B   C   D   E
+    
+    F  [G]--H---I   J
+        | \ 
+    K   L   M   N   O
+        |     \
+    P   Q   R   S   T
+         
+    U   V   W   X   Y
+
+    From position (1, 1) three 3-letter long words are possible to the east, southeast, and south: "GHI", "GMS", and "GLQ".
+
+    No 3-letter long words are possible in any of the other five directions.

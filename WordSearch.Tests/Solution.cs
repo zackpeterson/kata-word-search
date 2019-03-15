@@ -30,7 +30,9 @@ namespace WordSearch.Tests
                             A,B,C
                             D,E,F
                             G,H,I".Replace(" ", "");
-            char[,] expected = new char[,] { {'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'} };
+            char[,] expected = new char[,] { {'A', 'B', 'C'},
+                                             {'D', 'E', 'F'},
+                                             {'G', 'H', 'I'} };
             Puzzle p = new Puzzle(text);
             char[,] actual = p.Grid;
             CollectionAssert.AreEqual(actual, expected, message);
@@ -56,6 +58,41 @@ namespace WordSearch.Tests
             Direction unfitdirection = Direction.West;
             bool unfitresult = Puzzle.IsRoom(unfitwordlength, unfitgridRowCount, unfitgridColumnCount, unfitposition, unfitdirection);
             Assert.IsFalse(unfitresult, message);
+        }
+
+        [TestMethod]
+        public void Candidates_ShouldReturnStrings_WhenWordsFit()
+        {
+            string message = "find all possible strings of a given length from a given position in every direction of a given grid.";
+            int wordlength = 3;
+            char[,] grid = new char[,] { {'A', 'B', 'C'},
+                                         {'D', 'E', 'F'},
+                                         {'G', 'H', 'I'} };
+            (int y, int x) position = (0, 0);
+            List<FoundWord> actual = Candidates(wordlength, grid, position);
+
+            List<FoundWord> expected = new List<FoundWord>();
+            FoundWord east = new FoundWord();
+            east.Word = "ABC";
+            east.Positions = new List<(int y, int x)> {(0, 0), (0, 1), (0, 2)};
+            expected.Add(east);
+            FoundWord southeast = new FoundWord();
+            southeast.Word = "AEI";
+            southeast.Positions = new List<(int y, int x)> {(0, 0), (1, 1), (2, 2)};
+            expected.Add(southeast);
+            FoundWord south = new FoundWord();
+            south.Word = "ADG";
+            south.Positions = new List<(int y, int x)> {(0, 0), (1, 0), (2, 0)};
+            expected.Add(south);
+
+            Assert.AreEqual(expected[0].Word, actual[0].Word, message);
+            CollectionAssert.AreEqual(expected[0].Positions, actual[0].Positions, message);
+
+            Assert.AreEqual(expected[1].Word, actual[1].Word, message);
+            CollectionAssert.AreEqual(expected[1].Positions, actual[1].Positions, message);
+
+            Assert.AreEqual(expected[2].Word, actual[2].Word, message);
+            CollectionAssert.AreEqual(expected[2].Positions, actual[2].Positions, message);
         }
     }
 }

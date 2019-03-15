@@ -59,6 +59,66 @@ namespace WordSearch
             return result;
         }
 
+        public static List<FoundWord> Candidates(int wordlength, char[,] grid, (int y, int x) position)
+        {
+            List<FoundWord> candidates = new List<FoundWord>();
+            foreach (Direction d in Enum.GetValues(typeof(Direction)))
+            {
+                if (IsRoom(wordlength, grid.GetLength(0), grid.GetLength(1), position, d))
+                {
+                    FoundWord candidate = new FoundWord();
+                    candidate.Word = String.Empty;
+                    candidate.Positions = new List<(int y, int x)>();
+                    for (int l = 0; l < wordlength; l++)
+                    {
+                        int y;
+                        int x;
+                        switch (d)
+                        {
+                            case Direction.North:
+                                y = position.y - l;
+                                x = position.x;
+                                break;
+                            case Direction.Northeast:
+                                y = position.y - l;
+                                x = position.x + l;
+                                break;
+                            case Direction.East:
+                                y = position.y;
+                                x = position.x + l;
+                                break;
+                            case Direction.Southeast:
+                                y = position.y + l;
+                                x = position.x + l;
+                                break;
+                            case Direction.South:
+                                y = position.y + l;
+                                x = position.x;
+                                break;
+                            case Direction.Southwest:
+                                y = position.y + l;
+                                x = position.x - l;
+                                break;
+                            case Direction.West:
+                                y = position.y;
+                                x = position.x - l;
+                                break;
+                            case Direction.Northwest:
+                                y = position.y - l;
+                                x = position.x - l;
+                                break;
+                            default:
+                                throw new Exception("unhandled direction");
+                        }
+                        candidate.Word += grid[y, x];
+                        candidate.Positions.Add((y, x));
+                    }
+                    candidates.Add(candidate);
+                }
+            }
+            return candidates;
+        }
+
         public enum Direction
         {
             North,
