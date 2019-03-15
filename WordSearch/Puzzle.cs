@@ -26,6 +26,7 @@ namespace WordSearch
 
             result &= ValidateWordsExist(words);
             result &= ValidateWordsNotTooShort(words);
+            result &= ValidateWordsNotTooLong(words, gridsize);
 
             return result;
         }
@@ -44,6 +45,11 @@ namespace WordSearch
         public static bool ValidateWordsNotTooShort(string[] words)
         {
             return words.All(word => word.Length >= 2);
+        }
+
+        public static bool ValidateWordsNotTooLong(string[] words, int gridsize)
+        {
+            return words.All(word => word.Length <= gridsize);
         }
     }
 }

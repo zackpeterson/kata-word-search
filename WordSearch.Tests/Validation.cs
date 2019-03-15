@@ -87,5 +87,29 @@ namespace WordSearch.Tests
             bool result = Puzzle.Validate(text);
             Assert.IsFalse(result, message);
         }
+
+        [DataTestMethod]
+        [DataRow(6, true)]
+        [DataRow(5, true)]
+        [DataRow(4, false)]
+        public void ValidateWordsNotTooLong_ShouldReturnTrue_WhenWordsFitWithinGrid(int gridsize, bool expected)
+        {
+            string message = "words cannot be longer than the grid size";
+            string[] words = new string[] {"ONE", "TWO", "THREE", "FOUR"};
+            bool actual = Puzzle.ValidateWordsNotTooLong(words, gridsize);
+            Assert.AreEqual(expected, actual, message);
+        }
+
+        [TestMethod]
+        public void Validate_ShouldReturnFalse_WhenWordsDoNotFitWithinGrid()
+        {
+            string message = "words cannot be longer than the grid size";
+            string text = @"AB,DEF,GHIJ
+                            A,B,C
+                            D,E,F
+                            G,H,I".Replace(" ", "");
+            bool result = Puzzle.Validate(text);
+            Assert.IsFalse(result, message);
+        }
     }
 }
