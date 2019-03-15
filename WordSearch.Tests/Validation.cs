@@ -111,5 +111,31 @@ namespace WordSearch.Tests
             bool result = Puzzle.Validate(text);
             Assert.IsFalse(result, message);
         }
+
+        [TestMethod]
+        public void ValidateWordsDoNotRepeat_ShouldReturnTrue_WhenWordsAreUnique()
+        {
+            string message = "words cannot repeat";
+
+            string[] repeatwords = new string[] {"ONE", "TWO", "ONE", "THREE"};
+            bool repeatresult = Puzzle.ValidateWordsDoNotRepeat(repeatwords);
+            Assert.IsFalse(repeatresult, message);
+
+            string[] uniquewords = new string[] {"ONE", "TWO", "THREE"};
+            bool uniqueresult = Puzzle.ValidateWordsDoNotRepeat(uniquewords);
+            Assert.IsTrue(uniqueresult, message);
+        }
+
+        [TestMethod]
+        public void Validate_ShouldReturnFalse_WhenWordsAreRepeated()
+        {
+            string message = "words cannot repeat";
+            string text = @"AB,DEF,AB
+                            A,B,C
+                            D,E,F
+                            G,H,I".Replace(" ", "");
+            bool result = Puzzle.Validate(text);
+            Assert.IsFalse(result, message);
+        }
     }
 }
