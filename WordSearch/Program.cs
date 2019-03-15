@@ -13,7 +13,7 @@ namespace WordSearch
             string path = directory + "/" + filename;
             string text = File.ReadAllText(path);
 
-            bool isValid = Puzzle.Validate(text);
+            Puzzle p = new Puzzle(text);
         }
     }
 }

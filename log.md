@@ -99,3 +99,13 @@ I created several unit tests and methods to analyze and validate the format of a
  * words cannot repeat
  * each letter string must be a single character long
  * each line must contain as many letters as there are rows of the grid
+
+## Prepare the puzzle
+
+I processed the puzzle text and got ready to find the solution.
+
+A *Puzzle* type object has property:
+
+ * *Words* is a list of strings
+
+The *Puzzle* constructor method takes a text string parameter and then populates that property.

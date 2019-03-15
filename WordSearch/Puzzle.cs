@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -6,6 +7,26 @@ namespace WordSearch
 {
     public class Puzzle
     {
+        public readonly List<string> Words;
+
+        public Puzzle(string text)
+        {
+            bool isValid = Puzzle.Validate(text);
+            if(!isValid)
+            {
+                throw new Exception("puzzle text format is invalid");
+            }
+
+            // split lines on carriage return and line feed
+            string[] lines = text.Split(
+                new[] { "\r\n", "\r", "\n" },
+                StringSplitOptions.None
+            );
+
+            // split words on comma
+            Words = lines[0].Split(",").ToList();
+        }
+
         public static bool Validate(string text)
         {
             bool result = true;
