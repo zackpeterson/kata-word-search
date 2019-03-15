@@ -59,6 +59,47 @@ namespace WordSearch
             return result;
         }
 
+        public enum Direction
+        {
+            North,
+            Northeast,
+            East,
+            Southeast,
+            South,
+            Southwest,
+            West,
+            Northwest
+        }
+
+        public static bool IsRoom(int wordlength, int gridRowCount, int gridColumnCount, (int y, int x) position, Direction direction)
+        {
+            bool isRoomNorth = position.y - (wordlength - 1) >= 0;
+            bool isRoomEast = position.x + (wordlength - 1) <= gridColumnCount - 1;
+            bool isRoomSouth = position.y + (wordlength - 1) <= gridRowCount - 1;
+            bool isRoomWest = position.x - (wordlength - 1) >= 0;
+            switch (direction)
+            {
+                case Direction.North:
+                    return isRoomNorth;
+                case Direction.Northeast:
+                    return isRoomNorth && isRoomEast;
+                case Direction.East:
+                    return isRoomEast;
+                case Direction.Southeast:
+                    return isRoomSouth && isRoomEast;
+                case Direction.South:
+                    return isRoomSouth;
+                case Direction.Southwest:
+                    return isRoomSouth && isRoomWest;
+                case Direction.West:
+                    return isRoomWest;
+                case Direction.Northwest:
+                    return isRoomNorth && isRoomWest;
+                default:
+                    throw new Exception("unhandled direction");
+            }
+        }
+
         public static bool Validate(string text)
         {
             bool result = true;

@@ -130,3 +130,21 @@ Grid coordinates:
   
  * *Word* is a string
  * *Positions* is a list of letter position coordinate tuples
+
+ ## Solve the puzzle
+
+ I created the enumeration *Direction* that consists of the eight cardinal and intercardinal directions: north, northeast, east, southeast, south, southwest, west, and northwest.
+
+ I created the *IsRoom()* method to determine if a word of a given length that starts from a given position and continues toward a given direction will fit in a puzzle of a given size.
+
+    X   X   X   X   X
+
+    X   X   X   X   X
+          +---------------+
+    X   X | X   X   X     |
+          +---------------+
+    X   X   X   X   X
+
+    X   X   X   X   X
+
+    A word of length 4 that starts from position (2, 2) and continues toward the east cannot fit in a 5-by-5 size puzzle.
