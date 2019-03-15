@@ -20,5 +20,19 @@ namespace WordSearch.Tests
             List<string> actual = p.Words;
             CollectionAssert.AreEqual(actual, expected, message);
         }
+
+        [TestMethod]
+        public void Puzzle_ShouldHaveGrid_WhenConstructed()
+        {
+            string message = "the Grid property should be populated";
+            string text = @"AB,DEF
+                            A,B,C
+                            D,E,F
+                            G,H,I".Replace(" ", "");
+            char[,] expected = new char[,] { {'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'} };
+            Puzzle p = new Puzzle(text);
+            char[,] actual = p.Grid;
+            CollectionAssert.AreEqual(actual, expected, message);
+        }
     }
 }

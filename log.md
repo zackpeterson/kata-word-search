@@ -104,8 +104,23 @@ I created several unit tests and methods to analyze and validate the format of a
 
 I processed the puzzle text and got ready to find the solution.
 
-A *Puzzle* type object has property:
+A *Puzzle* type object has properties:
 
  * *Words* is a list of strings
+ * *Grid* is a 2-D array of characters
 
-The *Puzzle* constructor method takes a text string parameter and then populates that property.
+The *Puzzle* constructor method takes a text string parameter and then populates those properties.
+
+Grid coordinates:
+
+          x
+          0 1 2 3 4 5
+          -----------
+    y 0 | E,S,Q,Y,K,G
+      1 | N,G,V,H,R,R
+      2 | I,P,R,B,A,I
+      3 | A,D,F,O,M,F
+      4 | L,Y,R,R,E,J
+      5 | E,J,G,K,R,G
+
+    The letter B is at position (y:2,x:3)

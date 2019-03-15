@@ -8,6 +8,7 @@ namespace WordSearch
     public class Puzzle
     {
         public readonly List<string> Words;
+        public readonly char[,] Grid;
 
         public Puzzle(string text)
         {
@@ -25,6 +26,22 @@ namespace WordSearch
 
             // split words on comma
             Words = lines[0].Split(",").ToList();
+
+            // determine grid size
+            int gridsize = lines.Length - 1;
+
+            Grid = new char[gridsize, gridsize];
+            for(int y = 0; y < gridsize; y++)
+            {
+                // split letters on comma
+                string[] letters = lines[y + 1].Split(",");
+
+                // put letters into grid
+                for(int x = 0; x < letters.Length; x++)
+                {
+                    Grid[y, x] = letters[x].ToCharArray()[0];
+                }
+            }
         }
 
         public static bool Validate(string text)
