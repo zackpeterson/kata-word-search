@@ -104,12 +104,13 @@ I created several unit tests and methods to analyze and validate the format of a
 
 I processed the puzzle text and got ready to find the solution.
 
-A *Puzzle* type object has properties:
+A *Puzzle* type object has three properties:
 
  * *Words* is a list of strings
  * *Grid* is a 2-D array of characters
+ * *Solution* is a list of *FoundWord* type objects
 
-The *Puzzle* constructor method takes a text string parameter and then populates those properties.
+The *Puzzle* constructor method takes a text string parameter and then populates those three properties.
 
 Grid coordinates:
 
@@ -124,3 +125,8 @@ Grid coordinates:
       5 | E,J,G,K,R,G
 
     The letter B is at position (y:2,x:3)
+
+ *FoundWord* is a simple class with two properties:
+  
+ * *Word* is a string
+ * *Positions* is a list of letter position coordinate tuples

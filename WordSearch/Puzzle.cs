@@ -9,6 +9,7 @@ namespace WordSearch
     {
         public readonly List<string> Words;
         public readonly char[,] Grid;
+        public readonly List<FoundWord> Solution;
 
         public Puzzle(string text)
         {
@@ -42,6 +43,20 @@ namespace WordSearch
                     Grid[y, x] = letters[x].ToCharArray()[0];
                 }
             }
+
+            Solution = Solve(Words, Grid);
+        }
+
+        public class FoundWord
+        {
+            public string Word { get; set; }
+            public List<(int y, int x)> Positions { get; set; }
+        }
+
+        public List<FoundWord> Solve(List<string> words, char[,] grid)
+        {
+            List<FoundWord> result = new List<FoundWord>();
+            return result;
         }
 
         public static bool Validate(string text)
