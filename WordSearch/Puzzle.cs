@@ -36,6 +36,7 @@ namespace WordSearch
                 string[] letters = lines[y + 1].Split(",");
 
                 result &= ValidateEachLetterIsSingleCharacter(letters);
+                result &= ValidateLineHasCorrectNumberOfLetters(letters, gridsize);
             }
 
             return result;
@@ -70,6 +71,11 @@ namespace WordSearch
         public static bool ValidateEachLetterIsSingleCharacter(string[] letters)
         {
             return letters.All(letter => letter.Length == 1);
+        }
+
+        public static bool ValidateLineHasCorrectNumberOfLetters(string[] letters, int gridsize)
+        {
+            return letters.Length == gridsize;
         }
     }
 }

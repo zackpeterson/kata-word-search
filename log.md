@@ -87,3 +87,15 @@ I created sample methods in the `Program.cs` and `UnitTest1.cs` files to make su
 ## Reading and writing files
 
 I copied a text file to the output directory during build. I loaded and read the text file from the output directory. I created and saved a new text file into the output directory.
+
+## Validation
+
+I created several unit tests and methods to analyze and validate the format of a puzzle.
+
+ * allow only capital letters A through Z, commas, carriage return and line feed
+ * there must be words
+ * words cannot be shorter than 2 letters
+ * words cannot be longer than the grid size
+ * words cannot repeat
+ * each letter string must be a single character long
+ * each line must contain as many letters as there are rows of the grid

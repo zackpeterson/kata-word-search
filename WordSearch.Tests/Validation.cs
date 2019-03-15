@@ -163,5 +163,37 @@ namespace WordSearch.Tests
             bool result = Puzzle.Validate(text);
             Assert.IsFalse(result, message);
         }
+
+        [DataTestMethod]
+        [DataRow(6,false)]
+        [DataRow(7,true)]
+        [DataRow(8,false)]
+        public void ValidateLineHasCorrectNumberOfLetters_ShouldReturnTrue_WhenGridIsSquare(int gridsize, bool expected)
+        {
+            string message = "each line must contain as many letters as there are rows of the grid";
+            string[] letters = new string[] {"A", "B", "C", "D", "E", "F", "G"};
+            bool actual = Puzzle.ValidateLineHasCorrectNumberOfLetters(letters, gridsize);
+            Assert.AreEqual(expected, actual, message);
+        }
+
+        [TestMethod]
+        public void Validate_ShouldReturnFalse_WhenGridIsNotSquare()
+        {
+            string message = "each line must contain as many letters as there are rows of the grid";
+
+            string rectangletext = @"AB,DEF
+                                     A,B,C,D
+                                     E,F,G,H
+                                     I,J,K,L".Replace(" ", "");
+            bool rectangleresult = Puzzle.Validate(rectangletext);
+            Assert.IsFalse(rectangleresult, message);
+
+            string uneventext = @"AB,DEF
+                                  A,B,C,D
+                                  E,F,G
+                                  H,I".Replace(" ", "");
+            bool unevenresult = Puzzle.Validate(uneventext);
+            Assert.IsFalse(unevenresult, message);
+        }
     }
 }
