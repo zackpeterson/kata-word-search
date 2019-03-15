@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace WordSearch
@@ -24,6 +25,7 @@ namespace WordSearch
             string[] words = lines[0].Split(",");
 
             result &= ValidateWordsExist(words);
+            result &= ValidateWordsNotTooShort(words);
 
             return result;
         }
@@ -37,6 +39,11 @@ namespace WordSearch
         public static bool ValidateWordsExist(string[] words)
         {
             return words.Length >= 1 && words[0] != String.Empty;
+        }
+
+        public static bool ValidateWordsNotTooShort(string[] words)
+        {
+            return words.All(word => word.Length >= 2);
         }
     }
 }

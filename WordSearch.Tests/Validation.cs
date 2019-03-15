@@ -57,5 +57,35 @@ namespace WordSearch.Tests
             bool result = Puzzle.Validate(text);
             Assert.IsFalse(result, message);
         }
+
+        [TestMethod]
+        public void ValidateWordsNotTooShort_ShouldReturnTrue_WhenWordsAreLongEnough()
+        {
+            string message = "words cannot be shorter than 2 letters";
+            
+            string[] blankwords = new string[] {""};
+            bool blankresult = Puzzle.ValidateWordsNotTooShort(blankwords);
+            Assert.IsFalse(blankresult, message);
+            
+            string[] singleletterwords = new string[] {"A"};
+            bool singleletterresult = Puzzle.ValidateWordsNotTooShort(singleletterwords);
+            Assert.IsFalse(singleletterresult, message);
+
+            string[] mulitpleletterwords = new string[] {"AB", "ABC", "ABCD"};
+            bool multipleletterresult = Puzzle.ValidateWordsNotTooShort(mulitpleletterwords);
+            Assert.IsTrue(multipleletterresult, message);
+        }
+
+        [TestMethod]
+        public void Validate_ShouldReturnFalse_WhenWordsAreTooShort()
+        {
+            string message = "words cannot be shorter than 2 letters";
+            string text = @"AB,C,DEF
+                            A,B,C
+                            D,E,F
+                            G,H,I".Replace(" ", "");
+            bool result = Puzzle.Validate(text);
+            Assert.IsFalse(result, message);
+        }
     }
 }
