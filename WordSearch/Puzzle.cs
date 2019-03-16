@@ -53,9 +53,14 @@ namespace WordSearch
             public List<(int y, int x)> Positions { get; set; }
         }
 
-        public List<FoundWord> Solve(List<string> words, char[,] grid)
+        public static List<FoundWord> Solve(List<string> words, char[,] grid)
         {
             List<FoundWord> result = new List<FoundWord>();
+            foreach(string word in words)
+            {
+                List<FoundWord> f = Solve(word, grid);
+                result.AddRange(f);
+            }
             return result;
         }
 

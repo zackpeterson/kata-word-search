@@ -168,3 +168,7 @@ I created the *Candidates()* method to find all possible strings of a given leng
 I created a method *Solve()* that finds all instances of a single word starting from a single position.
 
 I created another method *Solve()* that searches all positions to find all instances of a single word.
+
+I created a third method *Solve()* that searches all positions to find all instances of any of several words.
+
+I created a unit test using DynamicData with complex objects to test that the *Puzzle* constructor correctly populates the *Solution* list of *FoundWord* type objects.
