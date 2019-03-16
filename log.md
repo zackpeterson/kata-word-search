@@ -172,3 +172,13 @@ I created another method *Solve()* that searches all positions to find all insta
 I created a third method *Solve()* that searches all positions to find all instances of any of several words.
 
 I created a unit test using DynamicData with complex objects to test that the *Puzzle* constructor correctly populates the *Solution* list of *FoundWord* type objects.
+
+## Input and output
+
+I made the program output the puzzle solution to the console.
+
+I made the program accept a filename as an optional command line argument.
+
+I added a tiny bit of error checking and hints:
+ * `failed to load file"`
+ * `failed to parse puzzle`

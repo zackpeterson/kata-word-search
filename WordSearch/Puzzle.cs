@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace WordSearch
@@ -194,6 +195,25 @@ namespace WordSearch
                 default:
                     throw new Exception("unhandled direction");
             }
+        }
+
+        public static string SolutionToString(List<FoundWord> solution)
+        {
+            StringBuilder result = new StringBuilder();
+            foreach(FoundWord f in solution)
+            {
+                string line = f.Word + ": ";
+                for(int p = 0; p < f.Positions.Count; p++)
+                {
+                    line += String.Format("({0},{1})", f.Positions[p].x, f.Positions[p].y);
+                    if(p < f.Positions.Count - 1)
+                    {
+                        line += ",";
+                    }
+                }
+                result.AppendLine(line);
+            }
+            return result.ToString();
         }
 
         public static bool Validate(string text)

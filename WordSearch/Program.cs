@@ -9,26 +9,43 @@ namespace WordSearch
     {
         static void Main(string[] args)
         {
-            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string filename = "puzzle-01-given-example.txt";
-            string path = directory + "/" + filename;
-            string text = File.ReadAllText(path);
-
-            Puzzle puzzle = new Puzzle(text);
-
-            foreach(FoundWord f in puzzle.Solution)
+            string filename;
+            if(args.Length >= 1)
             {
-                string line = f.Word + ": ";
-                for(int p = 0; p < f.Positions.Count; p++)
-                {
-                    line += String.Format("({0},{1})", f.Positions[p].x, f.Positions[p].y);
-                    if(p < f.Positions.Count - 1)
-                    {
-                        line += ",";
-                    }
-                }
-                Console.WriteLine(line);
+                filename = args[0];
             }
+            else
+            {
+                filename = "puzzle-01-given-example.txt";
+            }
+
+            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string path = directory + "/" + filename;
+            string text;
+            try
+            {
+                text = File.ReadAllText(path);
+            }
+            catch
+            {
+                Console.WriteLine("failed to load file");
+                Console.WriteLine("path: " + path);
+                return;
+            }
+
+            Puzzle puzzle;
+            try
+            {
+                puzzle = new Puzzle(text);
+            }
+            catch
+            {
+                Console.WriteLine("failed to parse puzzle");
+                return;
+            }
+
+            string solutionString = SolutionToString(puzzle.Solution);
+            Console.Write(solutionString);
         }
     }
 }

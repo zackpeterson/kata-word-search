@@ -289,5 +289,31 @@ namespace WordSearch.Tests
             yield return new object[] { text02, expected02 };
             yield return new object[] { text03, expected03 };
         }
+
+        [TestMethod]
+        public void SolutionToString_ShouldReturnString_WhenGivenListOfFoundWords()
+        {
+            string message = "represent a list of FoundWord objects as a string";
+
+            string expected = @"FRY: (0,2),(1,2),(2,2)
+                                AMY: (2,0),(2,1),(2,2)
+                                ".Replace("                                ", "");
+
+            List<FoundWord> solution = new List<FoundWord>();
+
+            FoundWord f01 = new FoundWord();
+            f01.Word = "FRY";
+            f01.Positions = new List<(int y, int x)> {(2, 0), (2, 1), (2, 2)};
+            solution.Add(f01);
+
+            FoundWord f02 = new FoundWord();
+            f02.Word = "AMY";
+            f02.Positions = new List<(int y, int x)> {(0, 2), (1, 2), (2, 2)};
+            solution.Add(f02);
+
+            string actual = Puzzle.SolutionToString(solution);
+
+            Assert.AreEqual(expected, actual, message);
+        }
     }
 }
