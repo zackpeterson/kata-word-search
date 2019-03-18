@@ -186,3 +186,9 @@ I added a tiny bit of error checking and hints:
 ## Finishing touches
 
 I added additional puzzle text files.
+
+I made the GitHub source code repository public.
+
+I tested download, installation, and execution on a second computer.
+
+I updated the *README.md* file.
