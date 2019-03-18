@@ -20,6 +20,8 @@ See file *log.md* for a record of the steps I took.
 
 ## Installation
 
+### .NET Core
+
 Download and install the .NET Core SDK from Microsoft.
 
  * https://dotnet.microsoft.com/download
@@ -28,13 +30,21 @@ Open a Terminal window and make sure it is working
 
     dotnet
 
+### Application
+
 Clone or download the source code from GitHub.
 
-Open a Terminal window and navigate to the WordSearch directory.
+Open a Terminal window and navigate to the `WordSearch` project directory.
 
 Make sure the program builds and executes with this command.
 
     dotnet run
+
+### Test
+
+Open a Terminal window and navigate to the `kata-word-search` solution directory. Run the unit test with this command.
+
+    dotnet test
 
 ## Usage
 
