@@ -180,5 +180,9 @@ I made the program output the puzzle solution to the console.
 I made the program accept a filename as an optional command line argument.
 
 I added a tiny bit of error checking and hints:
- * `failed to load file"`
+ * `failed to load file`
  * `failed to parse puzzle`
+
+## Finishing touches
+
+I added additional puzzle text files.
